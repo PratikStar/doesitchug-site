@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import Blog from "./site/Blog";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NoPage from "./site/NoPage";
+import Layout from "./site/Layout";
+import Interact from "./site/Interact";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Blog />} />
+                    <Route path="/interact" element={<Interact />} />
+                    <Route path="/404" element={<NoPage />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     </div>
   );
 }
