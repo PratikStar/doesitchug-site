@@ -75,7 +75,7 @@ export function HomeAppBar({refs}) {
     { name: "downloads", label: "Downloads" },
     { name: "citations", label: "Citation" },
     { name: "ack", label: "Acknowledgements" },
-    { name: "faq", label: "FAQ" },
+    // { name: "faq", label: "FAQ" },
   ];
 
   const drawerContent = (

@@ -48,8 +48,8 @@ const Interact = () => {
                              sx={{marginX: '10px'}}/>
                         <Tab label={<Typography variant="button">Explore the preset sounds</Typography>} value="2"
                              sx={{marginX: '10px'}}/>
-                        <Tab label={<Typography variant="button">Unifying Annotations</Typography>} value="3"
-                             sx={{marginX: '10px'}}/>
+                        {/*<Tab label={<Typography variant="button">Unifying Annotations</Typography>} value="3"*/}
+                        {/*     sx={{marginX: '10px'}}/>*/}
                     </TabList>
                 </Box>
 

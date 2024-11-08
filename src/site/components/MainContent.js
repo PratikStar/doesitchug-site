@@ -21,63 +21,8 @@ import DatasetInstructions from "./DatasetInstructions";
 import CitationInstructions from "./CitationInstructions";
 import ArticleIcon from "@mui/icons-material/Article";
 import DatasetCreationProcess from "./DatasetCreationProcess";
+import { GitHub, Twitter, Email } from '@mui/icons-material';
 
-const cardData = [
-  {
-    img: 'https://picsum.photos/800/450?random=1',
-    tag: 'Engineering',
-    title: 'Revolutionizing software development with cutting-edge tools',
-    description:
-      'Our latest engineering tools are designed to streamline workflows and boost productivity. Discover how these innovations are transforming the software development landscape.',
-    authors: [
-      { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
-      { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
-    ],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=2',
-    tag: 'Product',
-    title: 'Innovative product features that drive success',
-    description:
-      'Explore the key features of our latest product release that are helping businesses achieve their goals. From user-friendly interfaces to robust functionality, learn why our product stands out.',
-    authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=3',
-    tag: 'Design',
-    title: 'Designing for the future: trends and insights',
-    description:
-      'Stay ahead of the curve with the latest design trends and insights. Our design team shares their expertise on creating intuitive and visually stunning user experiences.',
-    authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=4',
-    tag: 'Company',
-    title: "Our company's journey: milestones and achievements",
-    description:
-      "Take a look at our company's journey and the milestones we've achieved along the way. From humble beginnings to industry leader, discover our story of growth and success.",
-    authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=45',
-    tag: 'Engineering',
-    title: 'Pioneering sustainable engineering solutions',
-    description:
-      "Learn about our commitment to sustainability and the innovative engineering solutions we're implementing to create a greener future. Discover the impact of our eco-friendly initiatives.",
-    authors: [
-      { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
-      { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
-    ],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=6',
-    tag: 'Product',
-    title: 'Maximizing efficiency with our latest product updates',
-    description:
-      'Our recent product updates are designed to help you maximize efficiency and achieve more. Get a detailed overview of the new features and improvements that can elevate your workflow.',
-    authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
-  },
-];
 
 const SyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -179,6 +124,7 @@ export function Search() {
   );
 }
 
+
 export default function MainContent({refs}) {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
 
@@ -189,7 +135,21 @@ export default function MainContent({refs}) {
   const handleBlur = () => {
     setFocusedCardIndex(null);
   };
+const Author = ({ name, github, twitter, email }) => (
+    <Box display="flex" alignItems="center" gap={1}>
+        <Link href={`mailto:${email}`} target="_blank" rel="noopener">
+            <Email fontSize="small" />
+        </Link>
+        <Typography variant="body2">{name}</Typography>
+        {/*<Link href={`https://github.com/${github}`} target="_blank" rel="noopener">*/}
+        {/*    <GitHub fontSize="small" />*/}
+        {/*</Link>*/}
+        {/*<Link href={`https://twitter.com/${twitter}`} target="_blank" rel="noopener">*/}
+        {/*    <Twitter fontSize="small" />*/}
+        {/*</Link>*/}
 
+    </Box>
+);
   const handleClick = () => {
     console.info('You clicked the filter chip.');
   };
@@ -331,6 +291,7 @@ export default function MainContent({refs}) {
                       paddingBottom: '20px'}}>
           Acknowledgements
         </Typography>
+
         <Typography
             align={"left"}
             sx={{
@@ -349,22 +310,46 @@ export default function MainContent({refs}) {
 
 
 
-        <Typography variant="h3"
-                    color="textSecondary"
-                    align={"left"}
-                    ref={refs["faq"]}
-                    sx={{
-                      paddingBottom: '20px'}}>
-          FAQ
-        </Typography>
-        <Typography
-            align={"left"}
-            sx={{
-              paddingBottom: '40px',
-              fontSize: '12pt'}}
-        >
-          (Optional section...)
-        </Typography>
+          {/*<Typography variant="h3"*/}
+          {/*            color="textSecondary"*/}
+          {/*            align={"left"}*/}
+          {/*            ref={refs["faq"]}*/}
+          {/*            sx={{*/}
+          {/*                paddingBottom: '20px'}}>*/}
+          {/*    FAQ*/}
+          {/*</Typography>*/}
+          {/*<Typography*/}
+          {/*    align={"left"}*/}
+          {/*    sx={{*/}
+          {/*        paddingBottom: '40px',*/}
+          {/*        fontSize: '12pt'}}*/}
+          {/*>*/}
+          {/*    (Optional section...)*/}
+          {/*</Typography>*/}
+
+
+
+          <Typography variant="h3"
+                      color="textSecondary"
+                      align={"left"}
+                      ref={refs["faq"]}
+                      sx={{
+                          paddingBottom: '20px'}}>
+              Contact Us
+          </Typography>
+          <Typography
+              align={"left"}
+              sx={{
+                  paddingBottom: '40px',
+                  fontSize: '12pt'}}
+          >
+              <Box display="flex" flexDirection="column" gap={1}>
+                  <Author name="Pratik Sutar" github="" twitter="" email="sutarpratik2012@gmail.com" />
+                  <Author name="Jason Naradowsky" github="" twitter="iansimon" email="narad@is.s.u-tokyo.ac.jp" />
+                  <Author name="Yusuke Miyao" github="" twitter="notwaldorf" email="yusuke@is.s.u-tokyo.ac.jp" />
+              </Box>
+          </Typography>
+          {/* Authors */}
 
 
 

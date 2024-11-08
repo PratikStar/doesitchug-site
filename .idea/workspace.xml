@@ -5,27 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30fbb8e9-8505-4356-b9e7-251c1e4d2207" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/site/Pairwise.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/UnifyingAnno.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/WordCloud.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/components/CitationInstructions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/components/DatasetCreationProcess.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/components/DatasetInstructions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/pairwise_data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/parsecsv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/top100Films.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/Blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/Blog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/Interact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/Interact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/Presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/Presets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/TemplateFrame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/TemplateFrame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/UnifyingAnno.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/UnifyingAnno.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/components/AppAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/components/AppAppBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/components/MainContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/components/MainContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/components/ToggleColorMode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/components/ToggleColorMode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729585495534</updated>
-      <workItem from="1729585501590" duration="96191000" />
+      <workItem from="1729585501590" duration="98004000" />
     </task>
     <servers />
   </component>

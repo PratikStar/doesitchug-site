@@ -20,7 +20,7 @@ export default function Blog() {
         "downloads": useRef(),
         "citations": useRef(),
         "ack": useRef(),
-        "faq": useRef(),
+        // "faq": useRef(),
 
     }
 

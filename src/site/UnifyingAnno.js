@@ -212,11 +212,10 @@ const UnifyingAnno = () => {
             {/*    </Table>*/}
             {/*</TableContainer>*/}
             <Typography
-                align={"right"}>
+                align={"left"}
+                sx={{paddingLeft: 3}}>
 
                 Please refer to the paper to check the graph-based algorithm used to unify the annotations.
-                There is no objectively correct method for combining these annotation statistics,
-                and practitioners can recompute such scores giving more or less weight to each annotation type.
             </Typography>
 
 
