@@ -17,6 +17,10 @@ import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 import Link from "@mui/material/Link";
+import DatasetInstructions from "./DatasetInstructions";
+import CitationInstructions from "./CitationInstructions";
+import ArticleIcon from "@mui/icons-material/Article";
+import DatasetCreationProcess from "./DatasetCreationProcess";
 
 const cardData = [
   {
@@ -175,7 +179,7 @@ export function Search() {
   );
 }
 
-export default function MainContent() {
+export default function MainContent({refs}) {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
 
   const handleFocus = (index) => {
@@ -193,7 +197,9 @@ export default function MainContent() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
       <div>
-        <Typography variant="h1" gutterBottom>
+        <Typography variant="h1"
+                    ref={refs["home"]}
+                    gutterBottom>
           Does it Chug?
         </Typography>
         <Typography variant="h5">Towards a Data-Driven  Understanding of Guitar Tone Description</Typography>
@@ -227,21 +233,22 @@ export default function MainContent() {
         </Typography>
 
 
-        <Typography variant="h3"
-                    color="textSecondary"
-                    align={"left"}
-                    sx={{
-                      paddingBottom: '20px'}}>
-          Background
-        </Typography>
-        <Typography
-            align={"left"}
-            sx={{
-              paddingBottom: '40px',
-              fontSize: '12pt'}}
-        >
-          (Background goes here...)
-        </Typography>
+        {/*<Typography variant="h3"*/}
+        {/*            color="textSecondary"*/}
+        {/*            align={"left"}*/}
+        {/*            ref={refs["background"]}*/}
+        {/*            sx={{*/}
+        {/*              paddingBottom: '20px'}}>*/}
+        {/*  Background*/}
+        {/*</Typography>*/}
+        {/*<Typography*/}
+        {/*    align={"left"}*/}
+        {/*    sx={{*/}
+        {/*      paddingBottom: '40px',*/}
+        {/*      fontSize: '12pt'}}*/}
+        {/*>*/}
+        {/*  (Background goes here...)*/}
+        {/*</Typography>*/}
 
 
 
@@ -249,6 +256,7 @@ export default function MainContent() {
         <Typography variant="h3"
                     color="textSecondary"
                     align={"left"}
+                    ref={refs["dataset"]}
                     sx={{
                       paddingBottom: '20px'}}>
           Dataset
@@ -259,14 +267,21 @@ export default function MainContent() {
               paddingBottom: '40px',
               fontSize: '12pt'}}
         >
-          (Summary of how dataset is collected...)
+          Our dataset creation involved three main steps: collecting guitar tone descriptors from online communities to compile a list of 110 adjectives,
+          generating diverse guitar audio samples by recording direct input signals performed by guitarists of various skill levels and
+          processing them with effects to create 960 unique clips, and annotating these recordings through a web-based interface.
+          This interface facilitated pairwise comparisons, label selections, and custom adjective inputs by expert annotators,
+          with 87% having over 10 years of guitar experience.
+          The process yielded 2,038 annotations, unified to provide comprehensive scores linking specific adjectives to audio characteristics.
         </Typography>
+        <DatasetCreationProcess />
 
 
 
         <Typography variant="h3"
                     color="textSecondary"
                     align={"left"}
+                    ref={refs["downloads"]}
                     sx={{
                       paddingBottom: '20px'}}>
           Downloads
@@ -274,11 +289,12 @@ export default function MainContent() {
         <Typography
             align={"left"}
             sx={{
-              paddingBottom: '40px',
               fontSize: '12pt'}}
         >
-          (How to download the Dataset...)
+          The dataset is hosted on HuggingFace Hub, please follow the following instructions to download and use it.
+
         </Typography>
+        <DatasetInstructions datasetPath="pratikstar/doesitchug" />
 
 
 
@@ -287,9 +303,10 @@ export default function MainContent() {
         <Typography variant="h3"
                     color="textSecondary"
                     align={"left"}
+                    ref={refs["citations"]}
                     sx={{
                       paddingBottom: '20px'}}>
-          Citations
+          <ArticleIcon sx={{ mr: 1 }} /> Citations
         </Typography>
         <Typography
             align={"left"}
@@ -297,7 +314,10 @@ export default function MainContent() {
               paddingBottom: '40px',
               fontSize: '12pt'}}
         >
-          (How to cite the Dataset...)
+          If you extend or use this work, please cite the paper where it was introduced:
+
+          <CitationInstructions />
+
         </Typography>
 
 
@@ -306,6 +326,7 @@ export default function MainContent() {
         <Typography variant="h3"
                     color="textSecondary"
                     align={"left"}
+                    ref={refs["ack"]}
                     sx={{
                       paddingBottom: '20px'}}>
           Acknowledgements
@@ -331,6 +352,7 @@ export default function MainContent() {
         <Typography variant="h3"
                     color="textSecondary"
                     align={"left"}
+                    ref={refs["faq"]}
                     sx={{
                       paddingBottom: '20px'}}>
           FAQ

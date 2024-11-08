@@ -12,6 +12,7 @@ import Toolbar from '@mui/material/Toolbar';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ToggleColorMode from './components/ToggleColorMode';
 import getBlogTheme from './theme/getBlogTheme';
+import {Fab} from "@mui/material";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   position: 'relative',
@@ -58,31 +59,34 @@ function TemplateFrame({
   }
   return (
     <ThemeProvider theme={blogTheme}>
-      <Box sx={{ height: '100dvh', display: 'flex', flexDirection: 'column' }}>
-        <StyledAppBar>
-          <Toolbar
-            variant="dense"
-            disableGutters
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '100%',
-              p: '8px 12px',
-            }}
-          >
-              {backToHome()}
+      {/*<Box sx={{ height: '100dvh', display: 'flex', flexDirection: 'column'}}>*/}
 
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              <ToggleColorMode
-                data-screenshot="toggle-mode"
-                mode={mode}
-                toggleColorMode={toggleColorMode}
-              />
-            </Box>
-          </Toolbar>
-        </StyledAppBar>
-        <Box sx={{ flex: '1 1', overflow: 'auto' }}>{children}</Box>
-      </Box>
+        {/*<StyledAppBar>*/}
+        {/*  <Toolbar*/}
+        {/*    variant="dense"*/}
+        {/*    disableGutters*/}
+        {/*    sx={{*/}
+        {/*      display: 'flex',*/}
+        {/*      justifyContent: 'right',*/}
+        {/*      width: '100%',*/}
+        {/*      p: '8px 12px',*/}
+        {/*        // bgcolor: 'red'*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    <Box sx={{ display: 'flex', gap: 1 }}>*/}
+
+        {/*      <ToggleColorMode*/}
+        {/*        data-screenshot="toggle-mode"*/}
+        {/*        mode={mode}*/}
+        {/*        toggleColorMode={toggleColorMode}*/}
+        {/*      />*/}
+        {/*    </Box>*/}
+        {/*  </Toolbar>*/}
+        {/*</StyledAppBar>*/}
+
+
+        <Box sx={{ flex: '1 1', overflow: 'auto'}}>{children}</Box>
+      {/*</Box>*/}
     </ThemeProvider>
   );
 }

@@ -5,6 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Footer from "./components/Footer";
 import * as React from "react";
 import getBlogTheme from "./theme/getBlogTheme";
+import ToggleColorMode from "./components/ToggleColorMode";
 
 const Layout = () => {
 
@@ -13,7 +14,6 @@ const Layout = () => {
 
     // This code only runs on the client side, to determine the system color preference
     React.useEffect(() => {
-        console.log("useEffect Layout.js")
         // Check if there is a preferred mode in localStorage
         const savedMode = localStorage.getItem('themeMode');
         if (savedMode) {
@@ -29,26 +29,31 @@ const Layout = () => {
 
     const toggleColorMode = () => {
         const newMode = mode === 'dark' ? 'light' : 'dark';
+        console.log("clicked");
         setMode(newMode);
         localStorage.setItem('themeMode', newMode); // Save the selected mode to localStorage
     };
     return (
         <>
-
-            <TemplateFrame
+            <ToggleColorMode
                 mode={mode}
                 toggleColorMode={toggleColorMode}
-            >
-                <ThemeProvider theme={blogTheme}>
-                    <CssBaseline enableColorScheme />
-
-
-                    <Outlet />
-
-                    <Footer />
-                </ThemeProvider>
-            </TemplateFrame>
-
+            />
+            <ThemeProvider theme={blogTheme}>
+                <CssBaseline enableColorScheme />
+                <Outlet/>
+                {/*<Footer />*/}
+            </ThemeProvider>
+            {/*<TemplateFrame*/}
+            {/*    mode={mode}*/}
+            {/*    toggleColorMode={toggleColorMode}*/}
+            {/*>*/}
+            {/*    <ThemeProvider theme={blogTheme}>*/}
+            {/*        <CssBaseline enableColorScheme />*/}
+            {/*        <Outlet/>*/}
+            {/*        /!*<Footer />*!/*/}
+            {/*    </ThemeProvider>*/}
+            {/*</TemplateFrame>*/}
         </>
     )
 };

@@ -15,6 +15,13 @@ import Sitemark from './SitemarkIcon';
 import {pink} from "@mui/material/colors";
 import {useNavigate} from "react-router-dom";
 
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from '@mui/material';
+
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -29,104 +36,250 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   padding: '8px 12px',
 }));
 
-export default function AppAppBar() {
+const StyledDrawer = styled(Drawer)(({ theme }) => ({
+  '& .MuiDrawer-paper': {
+    width: 280,
+    backgroundColor: theme.palette.background.default,
+    backdropFilter: 'blur(24px)',
+  },
+}));
+
+export function HomeAppBar({refs}) {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
-  let navigate = useNavigate();
-  const routeToInteract = () =>{
+  const routeToInteract = () => {
     let path = `interact`;
     navigate(path);
-  }
+  };
 
-  return (
-    <AppBar
-      position="fixed"
-      sx={{ boxShadow: 0, bgcolor: 'transparent', backgroundImage: 'none', mt: 10 }}
-    >
-      <Container maxWidth="lg">
-        <StyledToolbar variant="dense" disableGutters>
-          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-            {/*<Sitemark />*/}
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
-                Home
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Background
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Dataset
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Downloads
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                Citation
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Acknowledgements
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                FAQ
-              </Button>
-            </Box>
+  const scrollToComponent = (sectionName) => {
+    if (refs[sectionName].current) {
+      const offset = 100;
+      refs[sectionName].current.style.scrollMargin = `${offset}px`;
+      refs[sectionName].current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setOpen(false); // Close drawer after clicking
+    }
+  };
 
-          </Box>
-          <Box
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                gap: 1,
-                alignItems: 'center',
-              }}
-          >
+  const menuItems = [
+    { name: "home", label: "Home" },
+    { name: "dataset", label: "Dataset" },
+    { name: "downloads", label: "Downloads" },
+    { name: "citations", label: "Citation" },
+    { name: "ack", label: "Acknowledgements" },
+    { name: "faq", label: "FAQ" },
+  ];
 
-            <Button color="primary" variant="contained" size="small" onClick={routeToInteract}>
-              Interact with Dataset
-            </Button>
-          </Box>
-          <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
-            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-              <MenuIcon />
-            </IconButton>
-            <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
-              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
-                <Box
+  const drawerContent = (
+      <Box sx={{ p: 2 }}>
+        <List>
+          {menuItems.map((item) => (
+              <ListItem key={item.name} disablePadding>
+                <ListItemButton
+                    onClick={() => scrollToComponent(item.name)}
                     sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
+                      borderRadius: 1,
+                      mb: 0.5,
+                      '&:hover': {
+                        backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.1),
+                      }
                     }}
                 >
-                  <IconButton onClick={toggleDrawer(false)}>
-                    <CloseRoundedIcon />
-                  </IconButton>
-                </Box>
-                <Divider sx={{ my: 3 }} />
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
-                <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Sign up
-                  </Button>
-                </MenuItem>
-                <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
-                  </Button>
-                </MenuItem>
-              </Box>
-            </Drawer>
-          </Box>
-        </StyledToolbar>
-      </Container>
-    </AppBar>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </ListItem>
+          ))}
+          <ListItem disablePadding sx={{ mt: 2 }}>
+            <ListItemButton
+                onClick={routeToInteract}
+                sx={{
+                  borderRadius: 1,
+                  backgroundColor: (theme) => theme.palette.primary.main,
+                  color: 'white',
+                  '&:hover': {
+                    backgroundColor: (theme) => theme.palette.primary.dark,
+                  }
+                }}
+            >
+              <ListItemText primary="Interact with Dataset" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
   );
+
+  return (
+      <AppBar
+          position="fixed"
+          sx={{ boxShadow: 0, bgcolor: 'transparent', backgroundImage: 'none', mt: 3 }}
+      >
+        <Container maxWidth="lg">
+          <StyledToolbar variant="dense" disableGutters>
+            {/* Mobile Menu Icon */}
+            <Box sx={{ display: { xs: 'block', md: 'none' }, paddingX: 2 }}>
+              <IconButton
+                  color="inherit"
+                  onClick={toggleDrawer(true)}
+                  edge="start"
+                  sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+
+            {/* Desktop Menu */}
+            <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                {menuItems.map((item) => (
+                    <Button
+                        key={item.name}
+                        variant="text"
+                        color="info"
+                        size="small"
+                        onClick={() => scrollToComponent(item.name)}
+                        sx={{ minWidth: item.name === 'citations' || item.name === 'faq' ? 0 : 'auto' }}
+                    >
+                      {item.label}
+                    </Button>
+                ))}
+              </Box>
+            </Box>
+
+            {/* Desktop CTA Button */}
+            <Box
+                sx={{
+                  display: { xs: 'none', md: 'flex' },
+                  gap: 1,
+                  alignItems: 'center'
+                }}
+            >
+              <Button
+                  color="primary"
+                  variant="contained"
+                  size="small"
+                  onClick={routeToInteract}
+              >
+                Interact with Dataset
+              </Button>
+            </Box>
+          </StyledToolbar>
+
+          {/* Mobile Drawer */}
+          <StyledDrawer
+              anchor="left"
+              open={open}
+              onClose={toggleDrawer(false)}
+              ModalProps={{
+                keepMounted: true, // Better mobile performance
+              }}
+          >
+            {drawerContent}
+          </StyledDrawer>
+        </Container>
+      </AppBar>
+  );
+}
+
+
+
+
+export function InteractAppBar({refs}) {
+    const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate();
+
+    const toggleDrawer = (newOpen) => () => {
+        setOpen(newOpen);
+    };
+
+    const routeToHome = () =>{
+        let path = `/`;
+        navigate(path);
+    }
+
+    const drawerContent = (
+        <Box sx={{ p: 2 }}>
+            <List>
+                <ListItem disablePadding sx={{ mt: 2 }}>
+                    <ListItemButton
+                        onClick={routeToHome}
+                        sx={{
+                            borderRadius: 1,
+                            backgroundColor: (theme) => theme.palette.primary.main,
+                            color: 'white',
+                            '&:hover': {
+                                backgroundColor: (theme) => theme.palette.primary.dark,
+                            }
+                        }}
+                    >
+                        <ListItemText primary="Back to Home" />
+                    </ListItemButton>
+                </ListItem>
+            </List>
+        </Box>
+    );
+
+    return (
+        <AppBar
+            position="fixed"
+            sx={{ boxShadow: 0, bgcolor: 'transparent', backgroundImage: 'none', mt: 3 }}
+        >
+            <Container maxWidth="lg">
+                <StyledToolbar variant="dense" disableGutters>
+                    {/* Mobile Menu Icon */}
+                    <Box sx={{ display: { xs: 'block', md: 'none' }, paddingX: 2 }}>
+                        <IconButton
+                            color="inherit"
+                            onClick={toggleDrawer(true)}
+                            edge="start"
+                            sx={{ mr: 2 }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Box>
+
+                    {/* Desktop Menu */}
+                    <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
+                    </Box>
+
+                    {/* Desktop CTA Button */}
+                    <Box
+                        sx={{
+                            display: { xs: 'none', md: 'flex' },
+                            gap: 1,
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Button
+                            color="primary"
+                            variant="contained"
+                            size="small"
+                            onClick={routeToHome}
+                        >
+                            Back to Home
+                        </Button>
+                    </Box>
+                </StyledToolbar>
+
+                {/* Mobile Drawer */}
+                <StyledDrawer
+                    anchor="left"
+                    open={open}
+                    onClose={toggleDrawer(false)}
+                    ModalProps={{
+                        keepMounted: true, // Better mobile performance
+                    }}
+                >
+                    {drawerContent}
+                </StyledDrawer>
+            </Container>
+        </AppBar>
+    );
 }
