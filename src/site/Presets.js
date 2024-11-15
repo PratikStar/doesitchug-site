@@ -114,18 +114,18 @@ const Presets = () => {
     };
 
     const musicDesc = [
-        "Flatpicking arpeggios. Controlled and even-patterned picking with clear note separation. Suitable for genres that value precise guitar playing, such as classical or clean rock",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
     ]
     return (
         <Box container sx={{
@@ -218,8 +218,8 @@ const Presets = () => {
                        aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center"><Typography variant={"h5"}> Segment description </Typography></TableCell>
-                            <TableCell align="center"><Typography variant={"h5"}>Preset applied</Typography></TableCell>
+                            <TableCell align="center" sx={{ width: '20%' }}><Typography variant={"h5"}>Segment Number</Typography></TableCell>
+                            <TableCell align="left" sx={{ width: '80%' }}><Typography variant={"h5"}>Processed Audio</Typography></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -228,14 +228,15 @@ const Presets = () => {
                                 key={segment}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row" sx={{ width: '60%' }}>
+                                <TableCell component="th" scope="row" sx={{ width: '20%' }}>
                                     <Typography variant={"subtitle2"}>
                                         {musicDesc[parseInt(segment-1)]}
                                     </Typography>
                                 </TableCell>
-                                <TableCell align="center" sx={{ width: '40%' }}>
+                                <TableCell align="center" sx={{ width: '80%'}}>
                                     <AudioPlayer id={"inline" + segment}
                                                  key={parseInt(segment)}
+                                                 align="center"
                                                     sx={{
                                                         padding: '20px'
                                                     }}
